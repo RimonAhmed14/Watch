@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch</title>
+    <style>
+        .MyWatch {
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            text-align: center;
+            top: 35%;
+            left: 34%;
+            position: fixed;
+            border-radius: 5px;
+            font-size: 50px;
+            background-color: tomato;
+            color: white;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="MyWatch">
+        <span class="H"></span>
+        <span class="M"></span>
+        <span class="S"></span>
+    </div>
+    <script>
+        function myTime() {
+            var myDate = new Date
+            var h, m = (myDate.getMinutes() < 10) ? '0' + myDate.getMinutes() : myDate.getMinutes(),
+                s = (myDate.getSeconds() < 10) ? '0' + myDate.getSeconds() : myDate.getSeconds(),
+                M = (myDate.getHours() ? 'PM' : 'AM');
+
+            if (myDate.getHours() == 0) {
+                h = 12;
+            } else if (myDate.getHours() > 12) {
+                h = myDate.getHours() - 12;
+            } else {
+                h = myDate.getHours()
+            }
+            var currentTime = h + ':' + m + ':' + s + ':';
+            document.getElementsByClassName('H')[0].innerHTML = currentTime;
+            document.getElementsByClassName('M')[0].innerHTML = M;
+        }
+        myTime()
+        setInterval(function () {
+            myTime()
+        }, 1000)
+
+    </script>
+</body>
+
+</html>
